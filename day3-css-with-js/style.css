@@ -1,0 +1,28 @@
+:root {
+	--base: #ffc600;
+	--spacing: 10px;
+	--blur: 10px;
+}
+
+.body {
+	font-family: sans-serif;
+}
+
+.main-container {
+	display: flex;
+	align-items: center;
+	justify-container: center;
+	flex-direction: column;
+}
+
+img {
+	padding: var(--spacing);
+	background: var(--base);
+	margin-top: 3rem;
+	filter: blur(var(--blur));
+	width: 75%;
+}
+
+.h1 {
+	color: var(--base);
+}
