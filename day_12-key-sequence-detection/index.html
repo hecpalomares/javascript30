@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Day 12: Sequence Detection</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="description" content="Demo project">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<style>
+		html, body, p {
+			margin: 0;
+		}
+
+		.konami-code {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			height: 100vh;
+			font-size: 6rem;
+			color: whitesmoke;
+		}
+	</style>
+	<body>
+		<p class="konami-code">Input the K-Code</p>
+		<script>
+			const pressed = [];
+			const secretCode = '38384040373937396665';
+
+			window.addEventListener('keyup', (e) => {
+				console.log(e.keyCode);
+				pressed.push(e.keyCode);
+				pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+				if(pressed.join('').includes(secretCode)) {
+					console.log(document.querySelector('p'));
+					document.querySelector('p').innerHTML = 'KONAMI!';
+					document.querySelector('html').style.background = 'lightcoral';
+				}
+			});
+
+		</script>
+	</body>
+</html>
