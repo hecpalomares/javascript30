@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 25: Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+  	1
+    <div class="two">
+    	2
+      <div class="three">
+      	3
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after { box-sizing: inherit; }
+
+  div {
+    width:100%;
+    padding:100px;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background:mistyrose;
+  }
+
+  .three {
+    background:coral;
+  }
+</style>
+
+<button style="margin-top: 5px; padding: 5px;"> Button only fired once
+</button>
+<script>
+	const divs = document.querySelectorAll('div');
+	const button = document.querySelector('button');
+
+	function logText(e) {
+		console.log(this.classList.value);
+		//e.stopPropagation(); //stop bubbling this event up (to the parents)
+	}
+
+	//Third arguments {options}
+	//Capture: Run function on the way down, instead of false. Default is false.
+	//Once: Listen for the event once and unbind itself (removeEventListener). Store checkouts are a good example for it.
+	divs.forEach(div => div.addEventListener('click', logText));
+	button.addEventListener('click', () => {
+		console.log('click');
+	}, {
+		once: true
+	});
+
+
+</script>
+</body>
+</html>
